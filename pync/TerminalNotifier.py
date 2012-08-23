@@ -5,8 +5,6 @@ import os
 import platform
 import subprocess
 import itertools
-import time
-from datetime import datetime
 from dateutil.parser import parse
 
 LIST_FIELDS = ["group", "title", "sublitle", "message", "delivered_at"]

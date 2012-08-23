@@ -14,7 +14,7 @@ $ pip install pync
 ```
 or
 ```
-$ git clone git@github.com:SeTeM/pync.git
+$ git clone git://github.com/SeTeM/pync.git
 $ cd pync
 $ python setup.py install
 ```
@@ -24,7 +24,7 @@ Usage
 
 For full information on all the options, see the tool’s [README][README].
 
-Examples are:
+### Examples:
 
 ```python
 from pync import Notifier

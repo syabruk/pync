@@ -26,5 +26,12 @@ setup(name = 'pync',
     install_requires = [
         'python-dateutil>=2.0'
     ],
+    package_data = {
+        '': ['LICENSE', 'README.md']
+    },  
     packages = find_packages(),
+    classifiers = [
+        'Topic :: Utilities',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ]
 )

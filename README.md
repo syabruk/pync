@@ -10,6 +10,10 @@ Installation
 ------------
 
 ```
+$ pip install pync
+```
+or
+```
 $ python setup.py install
 ```
 

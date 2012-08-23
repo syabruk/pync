@@ -16,7 +16,7 @@ class TerminalNotifier(object):
         """
         self.bin_path = os.path.join(os.path.dirname(__file__), "vendor/terminal-notifier.app/Contents/MacOS/terminal-notifier")
         if not os.access(self.bin_path, os.X_OK):
-            os.chmod(self.bin_path, 111)
+            os.chmod(self.bin_path, 333)
         if not self.is_available:
             raise Exception("pync is only supported on Mac OS X 10.8, or higher.")
         if not os.path.exists(self.bin_path):

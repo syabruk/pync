@@ -3,7 +3,6 @@
 
 import os
 from setuptools import setup, find_packages
-from pync import __version__
 
 file_contents = []
 for file_name in ('README.md',):
@@ -12,13 +11,13 @@ for file_name in ('README.md',):
 long_description = '\n\n'.join(file_contents)
 
 setup(name = 'pync',
-    version = __version__,
+    version = "1.0",
     description = 'Python Wrapper for Mac OS 10.8 Notification Center',
     long_description = long_description,
     author = 'Vladislav Syabruk',
     author_email = 'sjabrik@gmail.com',
     url = 'https://github.com/setem/pync',
-    download_url = 'https://github.com/downloads/setem/pync/pync-%s.zip' % __version__,
+    download_url = 'https://github.com/downloads/setem/pync/pync-1.0.zip',
     license = "MIT",
     platforms = "MacOS X",
     keywords = "mac notification center wrapper",

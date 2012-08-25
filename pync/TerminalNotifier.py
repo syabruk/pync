@@ -74,7 +74,7 @@ class TerminalNotifier(object):
         """
         output = self.execute(["-list", group]).communicate()[0]
         res = list()
-        for line in output.splitlines()[1:-1]:
+        for line in output.splitlines()[1:]:
             res.append(dict(zip(LIST_FIELDS, line.split("\t"))))
             try:
                 res[-1]["delivered_at"] = parse(res[-1]["delivered_at"])

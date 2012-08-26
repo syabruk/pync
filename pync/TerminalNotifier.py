@@ -5,6 +5,8 @@ import os
 import platform
 import subprocess
 import itertools
+import urllib
+import shutil
 from dateutil.parser import parse
 
 LIST_FIELDS = ["group", "title", "sublitle", "message", "delivered_at"]
@@ -14,13 +16,38 @@ class TerminalNotifier(object):
         """
         Raises if not supported on the current platform or if terminal-notifier.app does not find.
         """
-        self.bin_path = os.path.join(os.path.dirname(__file__), "vendor/terminal-notifier.app/Contents/MacOS/terminal-notifier")
-        if not os.access(self.bin_path, os.X_OK):
-            os.chmod(self.bin_path, 333)
+        self.app_path = os.path.join(os.path.dirname(__file__), "vendor/terminal-notifier.app")
+        self.bin_path = os.path.join(self.app_path, "Contents/MacOS/terminal-notifier")
         if not self.is_available:
             raise Exception("pync is only supported on Mac OS X 10.8, or higher.")
         if not os.path.exists(self.bin_path):
-            raise Exception("terminal-notifier.app does not exist.")
+            self.download_app()
+        if not os.access(self.bin_path, os.X_OK):
+            os.chmod(self.bin_path, 111)
+
+    def download_app(self):
+        """ Downloads vendor/teminal-notifier.app from github.com/alloy """
+        link = "https://github.com/downloads/alloy/terminal-notifier/terminal-notifier_1.4.2.zip"
+        path_to_arch, _ = urllib.urlretrieve(link, link.split("/")[-1])
+        path_to_folder = os.path.join("vendor", os.path.splitext(path_to_arch)[0])
+
+        # why python resets resets permissions while unzipping?!
+        # with zipfile.ZipFile(path_to_arch) as arch:
+        #     arch.extractall()
+
+        if subprocess.call("unzip -o -u -d vendor %s" % path_to_arch, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT):
+            raise Exception("Error while unzip.")
+
+        os.remove(path_to_arch)
+        if os.path.exists(self.app_path):
+            shutil.rmtree(self.app_path)
+
+        try:
+            shutil.move(os.path.join(path_to_folder, "terminal-notifier.app"), self.app_path)
+        except shutil.Error:
+            raise Exception("File already exists.")
+        if os.path.exists(path_to_folder):
+            shutil.rmtree(path_to_folder)
 
     def notify(self, message, **kwargs):
         """
@@ -41,7 +68,6 @@ class TerminalNotifier(object):
           Notifier.notify('Hello World', activate='com.apple.Safari')
           Notifier.notify('Hello World', open='http://github.com/')
           Notifier.notify('Hello World', execute='say "OMG"')
-        
         """
         args = ['-message', message]
         args += itertools.chain.from_iterable([("-%s" % arg, str(key)) for arg, key in kwargs.items()])

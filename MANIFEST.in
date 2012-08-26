@@ -1,3 +1,2 @@
-graft pync/vendor
 include README.md LICENSE
 global-exclude .DS_Store

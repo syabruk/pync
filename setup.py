@@ -11,7 +11,7 @@ for file_name in ('README.md',):
 long_description = '\n\n'.join(file_contents)
 
 setup(name = 'pync',
-    version = "1.0",
+    version = "1.1",
     description = 'Python Wrapper for Mac OS 10.8 Notification Center',
     long_description = long_description,
     author = 'Vladislav Syabruk',

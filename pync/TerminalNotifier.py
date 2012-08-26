@@ -21,11 +21,11 @@ class TerminalNotifier(object):
         if not self.is_available:
             raise Exception("pync is only supported on Mac OS X 10.8, or higher.")
         if not os.path.exists(self.bin_path):
-            self.download_app()
+            self.__download_app()
         if not os.access(self.bin_path, os.X_OK):
             os.chmod(self.bin_path, 111)
 
-    def download_app(self):
+    def __download_app(self):
         """ Downloads vendor/teminal-notifier.app from github.com/alloy """
         link = "https://github.com/downloads/alloy/terminal-notifier/terminal-notifier_1.4.2.zip"
         path_to_arch, _ = urllib.urlretrieve(link, link.split("/")[-1])

@@ -15,9 +15,9 @@ $ pip install pync
 ```
 or
 ```
-$ git clone git://github.com/SeTeM/pync.git
-$ cd pync
-$ python setup.py install
+git clone git://github.com/SeTeM/pync.git
+cd pync
+python setup.py install
 ```
 
 Usage

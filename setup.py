@@ -10,6 +10,16 @@ for file_name in ('README.md',):
     file_contents.append(open(path).read())
 long_description = '\n\n'.join(file_contents)
 
+terminal_notifier_files = []
+for root, dirs, files in os.walk('pync/vendor/'):
+    root = '/'.join(root.split('/')[1:])
+    for f in files:
+        terminal_notifier_files.append(os.path.join(root, f))
+
+package_data = {
+    '': ['LICENSE', 'README.md'] + terminal_notifier_files,
+}
+
 setup(name = 'pync',
     version = "1.1",
     description = 'Python Wrapper for Mac OS 10.8 Notification Center',
@@ -26,9 +36,7 @@ setup(name = 'pync',
     install_requires = [
         'python-dateutil>=2.0'
     ],
-    package_data = {
-        '': ['LICENSE', 'README.md']
-    },  
+    package_data = package_data,
     packages = find_packages(),
     classifiers = [
         'Topic :: Utilities',

@@ -21,13 +21,13 @@ package_data = {
 }
 
 setup(name = 'pync',
-    version = "1.1",
+    version = "1.3",
     description = 'Python Wrapper for Mac OS 10.8 Notification Center',
     long_description = long_description,
     author = 'Vladislav Syabruk',
     author_email = 'sjabrik@gmail.com',
     url = 'https://github.com/setem/pync',
-    download_url = 'https://github.com/downloads/setem/pync/pync-1.1.zip',
+    download_url = 'https://github.com/downloads/setem/pync/pync-1.3.zip',
     license = "MIT",
     platforms = "MacOS X",
     keywords = "mac notification center wrapper",

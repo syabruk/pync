@@ -57,6 +57,8 @@ class TerminalNotifier(object):
 
     def execute(self, args):
         output = subprocess.Popen([self.bin_path, ] + args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        output.wait()
+        
         if output.returncode:
             raise Exception("Some error during subprocess call.")
         return output

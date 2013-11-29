@@ -4,8 +4,6 @@
 import os
 import platform
 import subprocess
-import urllib
-import shutil
 from dateutil.parser import parse
 
 LIST_FIELDS = ["group", "title", "sublitle", "message", "delivered_at"]
@@ -14,7 +12,7 @@ LIST_FIELDS = ["group", "title", "sublitle", "message", "delivered_at"]
 class TerminalNotifier(object):
     TERMINAL_NOTIFIER_VERSION = "1.4.2"
 
-    def __init__(self):
+    def __init__(self, wait=False):
         """
         Raises if not supported on the current platform or if terminal-notifier.app does not find.
         """
@@ -50,15 +48,24 @@ class TerminalNotifier(object):
           Notifier.notify('Hello World', activate='com.apple.Safari')
           Notifier.notify('Hello World', open='http://github.com/')
           Notifier.notify('Hello World', execute='say "OMG"')
+
+          The options `wait` is a boolean for wether or not we need to wait (block) for the background process to finish
         """
+
+        if "wait" in kwargs:
+            self.wait = kwargs.get("wait")
+            del kwargs["wait"]
+
         args = ['-message', message]
         args += [a for b in [("-%s" % arg, str(key)) for arg, key in kwargs.items()] for a in b]  # flatten list
         return self.execute(args)
 
     def execute(self, args):
         output = subprocess.Popen([self.bin_path, ] + args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        output.wait()
-        
+
+        if self.wait:
+            output.wait()
+
         if output.returncode:
             raise Exception("Some error during subprocess call.")
         return output

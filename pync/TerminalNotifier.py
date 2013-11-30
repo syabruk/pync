@@ -52,9 +52,7 @@ class TerminalNotifier(object):
           The options `wait` is a boolean for wether or not we need to wait (block) for the background process to finish
         """
 
-        if "wait" in kwargs:
-            self.wait = kwargs.get("wait")
-            del kwargs["wait"]
+        self.wait = kwargs.pop('wait', False)
 
         args = ['-message', message]
         args += [a for b in [("-%s" % arg, str(key)) for arg, key in kwargs.items()] for a in b]  # flatten list

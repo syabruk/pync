@@ -49,7 +49,7 @@ class TerminalNotifier(object):
           Notifier.notify('Hello World', open='http://github.com/')
           Notifier.notify('Hello World', execute='say "OMG"')
 
-          The options `wait` is a boolean for wether or not we need to wait (block) for the background process to finish
+          The options `wait` is a boolean for whether or not we need to wait (block) for the background process to finish
         """
 
         self.wait = kwargs.pop('wait', False)

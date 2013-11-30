@@ -10,14 +10,14 @@ LIST_FIELDS = ["group", "title", "sublitle", "message", "delivered_at"]
 
 
 class TerminalNotifier(object):
-    TERMINAL_NOTIFIER_VERSION = "1.4.2"
+    TERMINAL_NOTIFIER_VERSION = "1.5.0"
 
-    def __init__(self, wait=False):
+    def __init__(self):
         """
         Raises if not supported on the current platform or if terminal-notifier.app does not find.
         """
         self.app_path = os.path.join(os.path.dirname(__file__),
-                                     "vendor/terminal-notifier_%s/terminal-notifier.app" % self.TERMINAL_NOTIFIER_VERSION)
+                                     "vendor/terminal-notifier-%s/terminal-notifier.app" % self.TERMINAL_NOTIFIER_VERSION)
         self.bin_path = os.path.join(self.app_path, "Contents/MacOS/terminal-notifier")
         if not self.is_available:
             raise Exception("pync is only supported on Mac OS X 10.8, or higher.")

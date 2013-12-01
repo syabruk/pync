@@ -16,14 +16,19 @@ class TerminalNotifier(object):
         """
         Raises if not supported on the current platform or if terminal-notifier.app does not find.
         """
-        self.app_path = os.path.join(os.path.dirname(__file__),
-                                     "vendor/terminal-notifier-%s/terminal-notifier.app" % self.TERMINAL_NOTIFIER_VERSION)
+        self.app_path = os.path.join(
+            os.path.dirname(__file__),
+            "vendor/terminal-notifier-%s/terminal-notifier.app" % self.TERMINAL_NOTIFIER_VERSION
+        )
         self.bin_path = os.path.join(self.app_path, "Contents/MacOS/terminal-notifier")
+
         if not self.is_available:
             raise Exception("pync is only supported on Mac OS X 10.8, or higher.")
+
         if not os.path.exists(self.bin_path):
             raise Exception("pync was not properly installed. Head over to https://github.com/SeTeM/pync/"
                             " and file a bug.")
+
         if not os.access(self.bin_path, os.X_OK):
             os.chmod(self.bin_path, 111)
             if not os.access(self.bin_path, os.X_OK):
@@ -100,7 +105,7 @@ class TerminalNotifier(object):
 
     @staticmethod
     def is_available(self):
-        """ Returns wether or not the current platform is Mac OS X 10.8, or higher."""
+        """ Returns whether or not the current platform is Mac OS X 10.8, or higher."""
         return platform.system() == 'Darwin' and platform.mac_ver()[0] >= '10.8'
 
 Notifier = TerminalNotifier()

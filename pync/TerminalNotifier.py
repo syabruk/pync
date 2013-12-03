@@ -61,6 +61,7 @@ class TerminalNotifier(object):
 
         args = ['-message', message]
         args += [a for b in [("-%s" % arg, str(key)) for arg, key in kwargs.items()] for a in b]  # flatten list
+
         return self.execute(args)
 
     def execute(self, args):
@@ -72,6 +73,7 @@ class TerminalNotifier(object):
 
         if output.returncode:
             raise Exception("Some error during subprocess call.")
+
         return output
 
     def remove(self, group="ALL"):
@@ -93,8 +95,10 @@ class TerminalNotifier(object):
 
         If no information is available this will return [].
         """
+
         output = self.execute(["-list", group]).communicate()[0]
         res = list()
+
         for line in output.splitlines()[1:]:
             res.append(dict(zip(LIST_FIELDS, line.split("\t"))))
             try:

@@ -1,24 +1,26 @@
 # terminal-notifier
 
 terminal-notifier is a command-line tool to send Mac OS X User Notifications,
-which are available in Mac OS X 10.8.
+which are available in Mac OS X 10.8 and higher.
 
-It is currently packaged as an application bundle, because `NSUserNotification`
-does not work from a ‘Foundation tool’. [radar://11956694](radar://11956694)
 
-The Notification Center _always_ uses the application’s own icon, there’s
-currently no way to specify a custom icon for a notification. The only way to
-use this tool with your own icon is to include a build of terminal-notifier
-with your icon instead.
+## Caveats
 
-This tool will be used by [Kicker](https://github.com/alloy/kicker) to show the
-status of commands which are executed due to filesystem changes. (v3.0.0)
+* The Notification Center _always_ uses the application’s own icon, there’s
+  currently no way to specify a custom icon for a notification. The only way to
+  use this tool with your own icon is to use the `-sender` option or include a
+  build of terminal-notifier with your icon and bundle identifier instead.
+
+  However, you _can_ use unicode symbols and emojis. See the examples.
+
+* It is currently packaged as an application bundle, because `NSUserNotification`
+  does not work from a ‘Foundation tool’. [radar://11956694](radar://11956694)
 
 
 ## Download
 
-Prebuilt binaries, which are code-signed and ready to use, are available from
-the [downloads section](https://github.com/alloy/terminal-notifier/downloads).
+Prebuilt binaries are available from the
+[releases section](https://github.com/alloy/terminal-notifier/releases).
 
 Or if you want to use this from
 [Ruby](https://github.com/alloy/terminal-notifier/tree/master/Ruby), you can
@@ -47,6 +49,14 @@ $ terminal-notifier -[message|group|list] [VALUE|ID|ID] [options]
 
 This will obviously be a bit slower than using the tool without the wrapper.
 
+Some examples are:
+
+```
+$ echo 'Piped Message Data!' | terminal-notifier -sound default
+$ terminal-notifier -title '💰' -message 'Check your Apple stock!' -open 'http://finance.yahoo.com/q?s=AAPL'
+$ terminal-notifier -group 'address-book-sync' -title 'Address Book Sync' -subtitle 'Finished' -message 'Imported 42 contacts.' -activate 'com.apple.AddressBook'
+```
+
 
 #### Options
 
@@ -58,6 +68,9 @@ option or the `-list` option.
 `-message VALUE`  **[required]**
 
 The message body of the notification.
+
+Note that if this option is omitted and data is piped to the application, that
+data will be used instead.
 
 -------------------------------------------------------------------------------
 
@@ -120,6 +133,15 @@ Examples are:
 
 -------------------------------------------------------------------------------
 
+`-sender ID`
+
+Specifying this will make it appear as if the notification was send by that
+application instead, including using its icon.
+
+For information on the `ID` see the `-activate` option.
+
+-------------------------------------------------------------------------------
+
 `-open URL`
 
 Specifies a resource to be opened when the user clicks the notification. This
@@ -138,7 +160,7 @@ All the works are available under the MIT license. **Except** for
 ‘Terminal.icns’, which is a copy of Apple’s Terminal.app icon and as such is
 copyright of Apple.
 
-Copyright (C) 2012 Eloy Durán <eloy.de.enige@gmail.com>
+Copyright (C) 2012-2013 Eloy Durán <eloy.de.enige@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

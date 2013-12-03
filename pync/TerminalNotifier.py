@@ -6,7 +6,7 @@ import platform
 import subprocess
 from dateutil.parser import parse
 
-LIST_FIELDS = ["group", "title", "sublitle", "message", "delivered_at"]
+LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
 
 
 class TerminalNotifier(object):
@@ -64,6 +64,7 @@ class TerminalNotifier(object):
         return self.execute(args)
 
     def execute(self, args):
+        args = [str(arg) for arg in args]
         output = subprocess.Popen([self.bin_path, ] + args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
         if self.wait:

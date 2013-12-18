@@ -17,8 +17,12 @@ class TerminalNotifier(object):
         Raises an exception if not supported on the current platform or
         if terminal-notifier was not found.
         """
-        if os.path.exists("/usr/local/bin/terminal-notifier"):
-            self.bin_path = os.path.join("/usr/local/bin/", "terminal-notifier");
+        proc = subprocess.Popen(["which", "terminal-notifier"], stdout=subprocess.PIPE)
+        env_bin_path = proc.communicate()[0].strip()
+        if env_bin_path and os.path.exists(env_bin_path):
+            self.bin_path = os.path.realpath(env_bin_path)
+        elif os.path.exists("/usr/local/bin/terminal-notifier"):
+            self.bin_path = os.path.join("/usr/local/bin/", "terminal-notifier")
         else:
             self.app_path = os.path.join(
                 os.path.dirname(__file__),

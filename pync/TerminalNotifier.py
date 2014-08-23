@@ -6,7 +6,7 @@ import platform
 import subprocess
 from dateutil.parser import parse
 
-LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
+LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at", "sound"]
 
 
 class TerminalNotifier(object):
@@ -46,7 +46,7 @@ class TerminalNotifier(object):
         """
         Sends a User Notification.
 
-        The available options are `title`, `group`, `activate`, `open`, and
+        The available options are `title`, `group`, `activate`, `open`, `sound`, and
         `execute`. For a description of each option see:
 
           https://github.com/alloy/terminal-notifier/blob/master/README.markdown
@@ -57,6 +57,7 @@ class TerminalNotifier(object):
 
           Notifier.notify('Hello World')
           Notifier.notify('Hello World', title='Python')
+          Notifier.notify('Hello World', sound='Ping')
           Notifier.notify('Hello World', group=os.getpid())
           Notifier.notify('Hello World', activate='com.apple.Safari')
           Notifier.notify('Hello World', open='http://github.com/')

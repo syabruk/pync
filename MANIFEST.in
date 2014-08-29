@@ -1,2 +1,2 @@
-include README.md LICENSE
 global-exclude .DS_Store
+recursive-include pync/vendor *

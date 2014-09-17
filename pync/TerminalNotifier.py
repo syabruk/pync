@@ -120,7 +120,12 @@ class TerminalNotifier(object):
     @staticmethod
     def is_available():
         """ Returns whether or not the current platform is Mac OS X 10.8, or higher."""
-        return platform.system() == 'Darwin' and platform.mac_ver()[0] >= '10.8'
+        if not platform.system() == 'Darwin':
+            return False
+        
+        major, minor = platform.mac_ver()[0].split('.', maxsplit=1)
+        
+        return int(major) > 10 or int(minor) >= 8
 
 Notifier = TerminalNotifier()
 

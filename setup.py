@@ -17,7 +17,7 @@ for root, dirs, files in os.walk('pync/vendor/'):
         terminal_notifier_files.append(os.path.join(root, f))
 
 setup(name = 'pync',
-    version = "1.5",
+    version = "1.6",
     description = 'Python Wrapper for Mac OS 10.8 Notification Center',
     long_description = long_description,
     author = 'Vladislav Syabruk',

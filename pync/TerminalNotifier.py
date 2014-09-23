@@ -6,11 +6,11 @@ import platform
 import subprocess
 from dateutil.parser import parse
 
-LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at", "sound"]
+LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
 
 
 class TerminalNotifier(object):
-    TERMINAL_NOTIFIER_VERSION = "1.5.0"
+    TERMINAL_NOTIFIER_VERSION = "1.6.1"
 
     def __init__(self):
         """
@@ -122,9 +122,9 @@ class TerminalNotifier(object):
         """ Returns whether or not the current platform is Mac OS X 10.8, or higher."""
         if not platform.system() == 'Darwin':
             return False
-        
-        major, minor = platform.mac_ver()[0].split('.', maxsplit=1)
-        
+
+        major, minor = platform.mac_ver()[0].split('.')[:2]
+
         return int(major) > 10 or int(minor) >= 8
 
 Notifier = TerminalNotifier()

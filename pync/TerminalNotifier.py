@@ -127,7 +127,58 @@ class TerminalNotifier(object):
 
         return int(major) > 10 or int(minor) >= 8
 
+
 Notifier = TerminalNotifier()
+
+
+def notify(message, **kwargs):
+    """
+    Sends a User Notification.
+
+    The available options are `title`, `group`, `activate`, `open`, `sound`, and
+    `execute`. For a description of each option see:
+
+      https://github.com/alloy/terminal-notifier/blob/master/README.markdown
+
+    Examples are:
+
+      import pync
+
+      pync.notify('Hello World')
+      pync.notify('Hello World', title='Python')
+      pync.notify('Hello World', sound='Ping')
+      pync.notify('Hello World', group=os.getpid())
+      pync.notify('Hello World', activate='com.apple.Safari')
+      pync.notify('Hello World', open='http://github.com/')
+      pync.notify('Hello World', execute='say "OMG"')
+
+      The options `wait` is a boolean for whether or not we need to wait (block) for the background process to finish
+    """
+    Notifier.notify(message, **kwargs)
+
+
+def remove_notifications(group="ALL"):
+    """
+    Removes a notification that was previously sent with the specified
+    ‘group’ ID, if one exists.
+
+    If no ‘group’ ID is given, all notifications are removed.
+    """
+    return Notifier.execute(["-remove", group])
+
+
+def list_notifications(self, group="ALL"):
+    """
+    If a ‘group’ ID is given, and a notification for that group exists,
+    returns a dict with details about the notification.
+
+    If no ‘group’ ID is given, an array of hashes describing all
+    notifications.
+
+    If no information is available this will return [].
+    """
+    return Notifier.list(group)
+
 
 if __name__ == '__main__':
     Notifier.notify("Notification from %s" % __file__, open="http://github.com")

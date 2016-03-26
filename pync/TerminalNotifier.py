@@ -65,6 +65,8 @@ class TerminalNotifier(object):
 
           The options `wait` is a boolean for whether or not we need to wait (block) for the background process to finish
         """
+        
+        message = message.encode('utf-8')
 
         self.wait = kwargs.pop('wait', False)
 

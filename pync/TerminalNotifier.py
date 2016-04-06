@@ -144,7 +144,8 @@ def notify(message, **kwargs):
 
     Examples are:
 
-      import pync
+      from pync.TerminalNotifier import TerminalNotifier 
+      pync = TerminalNotifier()
 
       pync.notify('Hello World')
       pync.notify('Hello World', title='Python')

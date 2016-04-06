@@ -31,7 +31,8 @@ For full information on all the options, see the tool’s [README][README].
 
 Using the notify function
 ```python
-import pync
+from pync.TerminalNotifier import TerminalNotifier 
+pync = TerminalNotifier()
 
 pync.notify('Hello World')
 pync.notify('Hello World', title='Python')

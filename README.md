@@ -1,3 +1,7 @@
+## ⚠️ Disclaimer
+I haven't been supporting the library for a long time, and if someone wants to take responsibility over it, contact me, please.
+
+
 pync
 ====
 

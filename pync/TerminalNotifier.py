@@ -10,7 +10,7 @@ LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
 
 
 class TerminalNotifier(object):
-    TERMINAL_NOTIFIER_VERSION = "1.6.1"
+    TERMINAL_NOTIFIER_VERSION = "2.0.0"
 
     def __init__(self):
         """

@@ -60,13 +60,11 @@ class TerminalNotifier(object):
           Notifier.notify('Hello World', sound='Ping')
           Notifier.notify('Hello World', group=os.getpid())
           Notifier.notify('Hello World', activate='com.apple.Safari')
-          Notifier.notify('Hello World', open='http://github.com/')
+          Notifier.notify('Hello World'§, open='http://github.com/')
           Notifier.notify('Hello World', execute='say "OMG"')
 
           The options `wait` is a boolean for whether or not we need to wait (block) for the background process to finish
         """
-        
-        message = message.encode('utf-8')
 
         self.wait = kwargs.pop('wait', False)
 

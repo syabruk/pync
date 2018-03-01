@@ -4,6 +4,8 @@
 import os
 import platform
 import subprocess
+
+import sys
 from dateutil.parser import parse
 
 LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
@@ -65,6 +67,9 @@ class TerminalNotifier(object):
 
           The options `wait` is a boolean for whether or not we need to wait (block) for the background process to finish
         """
+
+        if sys.version_info < (3,):
+            message = message.encode('utf-8')
 
         self.wait = kwargs.pop('wait', False)
 

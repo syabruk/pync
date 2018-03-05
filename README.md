@@ -5,7 +5,7 @@ I haven't been supporting the library for a long time, and if someone wants to t
 pync
 ====
 
-A simple Python wrapper around the [`terminal-notifier`][HOMEPAGE] command-line tool (version 1.6.1), which allows you to send User Notifications to the Notification Center on Mac OS X 10.8, or higher.
+A simple Python wrapper around the [`terminal-notifier`][HOMEPAGE] command-line tool (version 2.0.0), which allows you to send User Notifications to the Notification Center on Mac OS X 10.10, or higher.
 
 ![Screenshot](http://f.cl.ly/items/1k051n3k0u0i101m1i0U/Screen%20Shot%202012-08-24%20at%2012.20.40%20PM.png)
 

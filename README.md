@@ -1,37 +1,30 @@
-## ⚠️ Disclaimer
-I haven't been supporting the library for a long time, and if someone wants to take responsibility over it, contact me, please.
-
-
-pync
-====
+# pync
 
 A simple Python wrapper around the [`terminal-notifier`][HOMEPAGE] command-line tool (version 2.0.0), which allows you to send User Notifications to the Notification Center on Mac OS X 10.10, or higher.
 
 ![Screenshot](http://f.cl.ly/items/1k051n3k0u0i101m1i0U/Screen%20Shot%202012-08-24%20at%2012.20.40%20PM.png)
 
-Installation
-------------
+### Installation
 
-```
+```bash
 pip install pync
 ```
 or
-```
+```bash
 pip install git+https://github.com/SeTeM/pync.git
 ```
 or
-```
+```bash
 git clone git://github.com/SeTeM/pync.git
 cd pync
 python setup.py install
 ```
 
-Usage
------
+### Usage
 
 For full information on all the options, see the tool’s [README][README].
 
-### Examples:
+#### Examples:
 
 Using the notify function
 ```python
@@ -66,8 +59,7 @@ Notifier.list(os.getpid())
 ```
 
 
-License
--------
+### License
 
 All the works are available under the MIT license. **Except** for ‘Terminal.icns’, which is a copy of Apple’s Terminal.app icon and as such is copyright of Apple.
 

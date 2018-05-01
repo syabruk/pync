@@ -1,6 +1,12 @@
 # pync
+[![PyPI - License](https://img.shields.io/pypi/l/pync.svg)](https://github.com/SeTeM/pync/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/pync.svg)](https://pypi.org/project/pync/)
+![GitHub issues](https://img.shields.io/github/issues-raw/SeTeM/pync.svg)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/SeTeM/pync.svg)
+[![GitHub forks](https://img.shields.io/github/forks/SeTeM/pync.svg?style=social&label=Fork)](https://github.com/SeTeM/pync)
+[![GitHub stars](https://img.shields.io/github/stars/SeTeM/pync.svg?style=social&label=Stars)](https://github.com/SeTeM/pync)
 
-A simple Python wrapper around the [`terminal-notifier`][HOMEPAGE] command-line tool (version 2.0.0), which allows you to send User Notifications to the Notification Center on Mac OS X 10.10, or higher.
+A simple Python wrapper around the [terminal-notifier][HOMEPAGE] command-line tool (version 2.0.0), which allows you to send User Notifications to the Notification Center on Mac OS X 10.10, or higher.
 
 ![Screenshot](http://f.cl.ly/items/1k051n3k0u0i101m1i0U/Screen%20Shot%202012-08-24%20at%2012.20.40%20PM.png)
 

@@ -23,13 +23,12 @@ for root, dirs, files in os.walk('pync/vendor/'):
         terminal_notifier_files.append(os.path.join(root, f))
 
 setup(name = 'pync',
-    version = "2.0.2",
+    version = "2.0.3",
     description = 'Python Wrapper for Mac OS 10.10 Notification Center',
     long_description = long_description,
     author = 'Vladislav Syabruk',
     author_email = 'sjabrik@gmail.com',
     url = 'https://github.com/setem/pync',
-    download_url = 'https://github.com/SeTeM/pync/archive/v2.0.1.zip',
     license = "MIT",
     platforms = "MacOS X",
     keywords = "mac notification center wrapper",
@@ -40,6 +39,15 @@ setup(name = 'pync',
     ],
     packages = find_packages(),
     classifiers = [
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Environment :: MacOS X',
+        'Topic :: Terminals',
         'Topic :: Utilities',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ]

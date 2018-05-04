@@ -14,11 +14,12 @@ LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
 class TerminalNotifier(object):
     TERMINAL_NOTIFIER_VERSION = "2.0.0"
 
-    def __init__(self):
+    def __init__(self, wait=False):
         """
         Raises an exception if not supported on the current platform or
         if terminal-notifier was not found.
         """
+        self._wait = wait
         proc = subprocess.Popen(["which", "terminal-notifier"], stdout=subprocess.PIPE)
         env_bin_path = proc.communicate()[0].strip()
         if env_bin_path and os.path.exists(env_bin_path):
@@ -71,7 +72,7 @@ class TerminalNotifier(object):
         if sys.version_info < (3,):
             message = message.encode('utf-8')
 
-        self.wait = kwargs.pop('wait', False)
+        self._wait = kwargs.pop('wait', False)
 
         args = ['-message', message]
         args += [a for b in [("-%s" % arg, str(key)) for arg, key in kwargs.items()] for a in b]  # flatten list
@@ -82,7 +83,7 @@ class TerminalNotifier(object):
         args = [str(arg) for arg in args]
         output = subprocess.Popen([self.bin_path, ] + args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
-        if self.wait:
+        if self._wait:
             output.wait()
 
         if output.returncode:
@@ -114,7 +115,7 @@ class TerminalNotifier(object):
         res = list()
 
         for line in output.splitlines()[1:]:
-            res.append(dict(zip(LIST_FIELDS, line.split("\t"))))
+            res.append(dict(zip(LIST_FIELDS, line.decode().split("\t"))))
             try:
                 res[-1]["delivered_at"] = parse(res[-1]["delivered_at"])
             except ValueError:

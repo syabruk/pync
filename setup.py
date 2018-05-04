@@ -40,6 +40,15 @@ setup(name = 'pync',
     ],
     packages = find_packages(),
     classifiers = [
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Environment :: MacOS X',
+        'Topic :: Terminals',
         'Topic :: Utilities',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ]

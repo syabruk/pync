@@ -42,6 +42,7 @@ pync.notify('Hello World', group=os.getpid())
 pync.notify('Hello World', activate='com.apple.Safari')
 pync.notify('Hello World', open='http://github.com/')
 pync.notify('Hello World', execute='say "OMG"')
+pync.notify('Hello World', appIcon='https://assets-cdn.github.com/images/modules/logos_page/Octocat.png')
 
 pync.remove_notifications(os.getpid())
 
@@ -58,6 +59,7 @@ Notifier.notify('Hello World', group=os.getpid())
 Notifier.notify('Hello World', activate='com.apple.Safari')
 Notifier.notify('Hello World', open='http://github.com/')
 Notifier.notify('Hello World', execute='say "OMG"')
+Notifier.notify('Hello World', appIcon='https://assets-cdn.github.com/images/modules/logos_page/Octocat.png')
 
 Notifier.remove(os.getpid())
 

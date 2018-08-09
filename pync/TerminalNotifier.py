@@ -8,7 +8,7 @@ import sys
 
 from dateutil.parser import parse
 
-LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at"]
+LIST_FIELDS = ["group", "title", "subtitle", "message", "delivered_at", "appIcon"]
 
 
 class TerminalNotifier(object):
@@ -187,4 +187,9 @@ def list_notifications(self, group="ALL"):
 
 
 if __name__ == '__main__':
-    Notifier.notify("Notification from %s" % __file__, open="http://github.com")
+    Notifier.notify(
+        "Notification from %s" % __file__,
+        title='pync Notification',
+        open='https://github.com/SeTeM/pync',
+        appIcon='https://assets-cdn.github.com/images/modules/logos_page/Octocat.png'
+    )

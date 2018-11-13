@@ -70,7 +70,7 @@ class TerminalNotifier(object):
         """
 
         if sys.version_info < (3,):
-            message = message.encode('utf-8')
+            message = message.encode('utf-8', 'replace')
 
         self._wait = kwargs.pop('wait', False)
 
